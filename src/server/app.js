@@ -61,5 +61,6 @@ app.use('/api', function(req, res) {
 app.use('*', (req, res) => {
   res.sendFile(path.join(`${buildPath}/index.html`));
 });
+const unused = '';
 
 module.exports = app;

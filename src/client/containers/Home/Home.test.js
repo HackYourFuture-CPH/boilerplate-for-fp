@@ -6,5 +6,5 @@ import { Home } from './Home';
 test('Home section has correct classname', () => {
   const title = 'home';
 
-  expect(render(<Home />).container.firstChild).toHaveClass(title);
+  expect(render(<Home />).container.firstChild).toHaveClass('title');
 });
