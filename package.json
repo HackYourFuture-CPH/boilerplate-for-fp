@@ -36,7 +36,7 @@
     "@storybook/react": "^5.3.17",
     "@storybook/theming": "^5.3.17",
     "app-root-path": "^2.2.1",
-    "babel-polyfill": "^6.26.0",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "circular-json": "^0.5.9",
@@ -78,8 +78,12 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-regenerator": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
+    "babel-jest": "^26.0.1",
+    "babel-polyfill": "^6.26.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "concurrently": "^4.1.0",
     "express-form-data": "^2.0.10",
@@ -90,6 +94,7 @@
     "nodemon": "^1.12.1",
     "poetic": "^1.2.6",
     "sequelize-cli": "^5.4.0",
+    "supertest": "^4.0.2",
     "webpack-dev-server": "3.7.2"
   },
   "jest": {

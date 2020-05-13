@@ -30,4 +30,10 @@ module.exports = {
       directory: path.join(__dirname, '/seeds/production'),
     },
   },
+  test: {
+    client: 'sqlite',
+    connection: {
+      filename: './mydb.sqlite',
+    },
+  },
 };

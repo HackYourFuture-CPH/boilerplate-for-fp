@@ -36,7 +36,7 @@ app.use(
 app.use(cookieParser());
 app.use(cors());
 
-app.use(process.env.API_PATH, apiRouter);
+app.use('/api', apiRouter);
 
 app.use((err, req, res) => {
   if (err instanceof HttpError) {
