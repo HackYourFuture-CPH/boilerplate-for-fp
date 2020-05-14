@@ -31,7 +31,7 @@ git remote -v
 
 You should now be able to pull changes from the boilerplate master branch by running this command in your newly created repository:
 
-    git pull origin boilerplate master
+    git pull boilerplate master --allow-unrelated-histories
 
 ### 💥Create
 

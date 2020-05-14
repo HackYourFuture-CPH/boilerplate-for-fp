@@ -55,7 +55,7 @@ module.exports = {
     }),
     new CaseSensitivePathsPlugin(),
     new Dotenv({
-      safe: true,
+      safe: false,
     }),
   ],
 };
