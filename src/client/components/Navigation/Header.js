@@ -3,28 +3,46 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { signOut } from '../../firebase/auth';
 
-export default function Header({ isAuth = false }) {
-  if (isAuth) {
+export default function Header({ isAuthenticated = false }) {
+  if (isAuthenticated) {
     return (
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
-        <button type="button" onClick={signOut}>
-          Sign out
-        </button>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <button type="button" onClick={signOut}>
+              Sign out
+            </button>
+          </li>
+        </ul>
       </nav>
     );
   }
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/sign-in">Sign in</Link>
-      <Link to="/sign-up">Sign up</Link>
-      <Link to="/reset-password">Reset password</Link>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/sign-in">Sign in</Link>
+        </li>
+        <li>
+          <Link to="/sign-up">Sign up</Link>
+        </li>
+        <li>
+          <Link to="/reset-password">Reset password</Link>
+        </li>
+      </ul>
     </nav>
   );
 }
 
 Header.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };

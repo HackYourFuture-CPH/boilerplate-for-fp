@@ -1,5 +1,21 @@
 import { auth } from './index';
 
+function handleAuthErrors({ code, message }) {
+  switch (code) {
+    case FIREBASE_ERROR_CODES.WRONG_PASSWORD:
+      return alert('Wrong password.');
+    case FIREBASE_ERROR_CODES.WEAK_PASSWORD:
+      return alert('Your password is too weak.');
+    case FIREBASE_ERROR_CODES.INVALID_EMAIL:
+      return alert(message);
+    case FIREBASE_ERROR_CODES.USER_NOT_FOUND:
+      return alert(message);
+
+    default:
+      return alert(message);
+  }
+}
+
 const FIREBASE_ERROR_CODES = {
   WEAK_PASSWORD: 'auth/weak-password',
   WRONG_PASSWORD: 'auth/wrong-password',
@@ -12,22 +28,10 @@ const FIREBASE_ERROR_CODES = {
  * @param {email, password} (sign in user)
  */
 export async function signIn({ email, password }) {
-  console.log('he');
   try {
-    console.log({ email, password });
     await auth.signInWithEmailAndPassword(email, password);
   } catch (error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode === FIREBASE_ERROR_CODES.WRONG_PASSWORD) {
-      alert('Wrong password.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
-    // [END_EXCLUDE]
+    handleAuthErrors(error);
   }
 }
 
@@ -36,16 +40,7 @@ export async function signUp({ email, password }) {
     await auth.createUserWithEmailAndPassword(email, password);
     return true;
   } catch (error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode === FIREBASE_ERROR_CODES.WEAK_PASSWORD) {
-      alert('The password is too weak.');
-    } else {
-      alert(errorMessage);
-    }
-    console.log(error);
+    handleAuthErrors(error);
   }
 }
 
@@ -56,17 +51,7 @@ export async function resetPassword({ email }) {
     // Password Reset Email Sent!
     alert('Password Reset Email Sent!');
   } catch (error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode === FIREBASE_ERROR_CODES.INVALID_EMAIL) {
-      alert(errorMessage);
-    } else if (errorCode === FIREBASE_ERROR_CODES.USER_NOT_FOUND) {
-      alert(errorMessage);
-    }
-    console.log(error);
-    // [END_EXCLUDE]
+    handleAuthErrors(error);
   }
   // [END sendpasswordemail];
 }

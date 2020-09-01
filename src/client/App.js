@@ -5,18 +5,18 @@ import { Home } from './containers/Home/Home';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import ResetPassword from './containers/ResetPassword';
-import PrivateRoute from './components/Auth/PrivateRoute';
-import { useAuth } from './hooks/useAuth';
+import AuthenticatedRoute from './components/Auth/AuthenticatedRoute';
+import { useAuthentication } from './hooks/useAuthentication';
 import Header from './components/Navigation/Header';
 import Profile from './containers/Profile';
 import Loader from './components/Loader';
 
 function App() {
-  const { isAuth, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useAuthentication();
   if (isLoading) return <Loader />;
   return (
     <Router>
-      <Header isAuth={isAuth} />
+      <Header isAuthenticated={isAuthenticated} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -24,9 +24,13 @@ function App() {
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <PrivateRoute exact path="/profile" isAuth={isAuth}>
+        <AuthenticatedRoute
+          exact
+          path="/profile"
+          isAuthenticated={isAuthenticated}
+        >
           <Profile />
-        </PrivateRoute>
+        </AuthenticatedRoute>
       </Switch>
     </Router>
   );

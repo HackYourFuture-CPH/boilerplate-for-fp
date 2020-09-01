@@ -3,7 +3,7 @@ import { resetPassword } from '../../firebase/auth';
 import ResetPassword from '../../components/Forms/ResetPassword';
 import Loader from '../../components/Loader';
 
-export default function SignInContainer() {
+export default function ResetPasswordContainer() {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async ({ email }) => {

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-function PrivateRoute({ children, isAuth, ...rest }) {
+function AuthenticatedRoute({ children, isAuthenticated, ...rest }) {
   return (
     <Route
       // (we need to spread)
       {...rest} // eslint-disable-line
       render={({ location }) =>
-        isAuth ? (
+        isAuthenticated ? (
           children
         ) : (
           <Redirect
@@ -23,9 +23,9 @@ function PrivateRoute({ children, isAuth, ...rest }) {
   );
 }
 
-export default PrivateRoute;
+export default AuthenticatedRoute;
 
-PrivateRoute.propTypes = {
+AuthenticatedRoute.propTypes = {
   children: PropTypes.element.isRequired,
-  isAuth: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };

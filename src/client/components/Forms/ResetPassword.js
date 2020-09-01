@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 export default function ResetPassword({ onSubmit }) {
   const [email, setEmail] = useState('');
   const handleEmailInput = (e) => setEmail(e.target.value);
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await onSubmit({ email });
+    onSubmit({ email });
   };
   return (
     <form onSubmit={handleSubmit}>

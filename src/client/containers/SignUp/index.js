@@ -4,23 +4,26 @@ import UserCreationSuccess from '../../components/Success/UserCreationSuccess';
 import SignUp from '../../components/Forms/SignUp';
 import Loader from '../../components/Loader';
 
-function validateInput({ password, passwordConfirm }) {
-  return password === passwordConfirm;
-}
+const getDoesPasswordsMatch = ({ password, passwordConfirm }) =>
+  password === passwordConfirm;
 
 export default function SignUpContainer() {
-  const [isSuccessful, setisSuccessful] = useState(false);
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const onSubmit = async ({ email, password, passwordConfirm }) => {
     setIsLoading(true);
-    const isValid = validateInput({ password, passwordConfirm });
-    if (!isValid) {
+    const doesPasswordsMatch = getDoesPasswordsMatch({
+      password,
+      passwordConfirm,
+    });
+    if (!doesPasswordsMatch) {
       setIsLoading(false);
-      return alert("Passwords doesn't match");
+      alert("Passwords doesn't match");
+      return;
     }
     const isSignedUp = await signUp({ email, password });
     setIsLoading(false);
-    if (isSignedUp) setisSuccessful(true);
+    if (isSignedUp) setIsSuccessful(true);
   };
   if (isLoading) return <Loader />;
   if (isSuccessful) return <UserCreationSuccess />;

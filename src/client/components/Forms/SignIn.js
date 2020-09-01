@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export default function SignIn({ onSubmit }) {
-  const [email, setEmail] = useState('nielsschmidt92@gmail.com');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleEmailInput = (e) => setEmail(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    await onSubmit({ email, password });
+    onSubmit({ email, password });
   };
   return (
     <form onSubmit={handleSubmit}>
@@ -17,6 +17,7 @@ export default function SignIn({ onSubmit }) {
         <input
           type="email"
           name="email"
+          placeholder="Write your email"
           value={email}
           onChange={handleEmailInput}
           required
@@ -27,6 +28,7 @@ export default function SignIn({ onSubmit }) {
         <input
           type="password"
           name="password"
+          placeholder="Write your password"
           value={password}
           onChange={handlePasswordInput}
           required

@@ -10,24 +10,24 @@ function authRedirect() {
   }
 }
 
-export function useAuth() {
+export function useAuthentication() {
   // default not authenticated
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   // default is loading
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       // if user exists it means authenticated
       if (user) {
-        setIsAuth(true);
+        setIsAuthenticated(true);
         setIsLoading(false);
         authRedirect();
       } else {
-        setIsAuth(false);
+        setIsAuthenticated(false);
         setIsLoading(false);
       }
     });
     return () => {}; // eslint-disable-line
   }, []);
-  return { isAuth, isLoading };
+  return { isAuthenticated, isLoading };
 }
