@@ -19,6 +19,7 @@ export default function SignUp({ onSubmit }) {
         <input
           type="email"
           name="email"
+          placeholder="Write your email"
           value={email}
           onChange={handleEmailInput}
           required
@@ -29,6 +30,7 @@ export default function SignUp({ onSubmit }) {
         <input
           type="password"
           name="password"
+          placeholder="Write your password"
           value={password}
           onChange={handlePasswordInput}
           required
@@ -39,6 +41,7 @@ export default function SignUp({ onSubmit }) {
         <input
           type="password"
           name="password"
+          placeholder="Write your password again"
           value={passwordConfirm}
           onChange={handlePasswordConfirmInput}
           required
