@@ -9,7 +9,9 @@ function authRedirect() {
     window.location.href = '/profile';
   }
 }
-
+/**
+ * Docs: https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data
+ */
 export function useAuthentication() {
   // default not authenticated
   const [isAuthenticated, setIsAuthenticated] = useState(false);
