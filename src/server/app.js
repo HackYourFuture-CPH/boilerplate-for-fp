@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const admin = require('firebase-admin');
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
@@ -11,12 +12,17 @@ const HttpError = require('./api/lib/utils/http-error');
 const buildPath = path.join(__dirname, '../../dist');
 
 const apiRouter = require('./api/routes/api-router');
+const { authenticate } = require('./middleware/auth');
 
 require('./config/db');
+
+admin.initializeApp(); // Might need to add service key env.
 
 const app = express();
 
 app.use(express.static(buildPath));
+
+app.use(authenticate);
 
 app.locals.ENV = process.env.NODE_ENV;
 app.locals.ENV_DEVELOPMENT = process.env.NODE_ENV === 'development';
