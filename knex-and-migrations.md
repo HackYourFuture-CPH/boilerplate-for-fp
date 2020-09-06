@@ -145,13 +145,13 @@ Here is a list of some important Knex commands to know:
 
 | Command                               | Note                                                                                          |
 | ------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `knex -- migrate:latest`              | Run "latest" migrations (i.e. migrations that have not previously been run on your database). |
-| `knex -- migrate:rollback`            | "Roll back" the latest migration.                                                             |
-| `knex -- migrate:up`                  | Apply one migration forward from the current state.                                           |
-| `knex -- migrate:down`                | Apply one migration backwards from the current state.                                         |
-| `knex -- migrate:make migration_name` | Create a new migration file in the `/migrations` folder.                                      |
-| `knex -- seed:make seed_name`         | Create a new seed file.                                                                       |
-| `knex -- seed:run`                    | Run the seed files from the seeds folder.                                                     |
+| `npm run knex -- migrate:latest`              | Run "latest" migrations (i.e. migrations that have not previously been run on your database). |
+| `npm run knex -- migrate:rollback`            | "Roll back" the latest migration.                                                             |
+| `npm run knex -- migrate:up`                  | Apply one migration forward from the current state.                                           |
+| `npm run knex -- migrate:down`                | Apply one migration backwards from the current state.                                         |
+| `npm run knex -- migrate:make migration_name` | Create a new migration file in the `/migrations` folder.                                      |
+| `npm run knex -- seed:make seed_name`         | Create a new seed file.                                                                       |
+| `npm run knex -- seed:run`                    | Run the seed files from the seeds folder.                                                     |
 
 In addition to the commands above, we have a npm script called
 `npm run db:setup` which is shorthand for running `knex migrate:latest` followed
