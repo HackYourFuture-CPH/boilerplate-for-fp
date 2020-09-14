@@ -143,6 +143,8 @@ Note the capitalization in the example above. It's easy to get wrong. Refer to t
 
 #### Using Storybook
 
+Checkout this great video from Zaki Wasik: https://www.youtube.com/watch?v=_AZhtGTWN8k
+
 Storybook provides a _sandbox environment_ where it is easy to mock components in a visual way. When you create a _presentational component_ you should always add a story so it shows up in storybook. Benefits of using Storybook is:
 
 - Clear overview of which components are implemented and which are not.
