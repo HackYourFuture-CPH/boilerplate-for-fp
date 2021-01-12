@@ -2,18 +2,18 @@
 Can be deleted as soon as the first real controller is added. */
 
 const knex = require('../../config/db');
-const Error = require('../lib/utils/http-error');
+const HttpError = require('../lib/utils/http-error');
 const moment = require('moment-timezone');
 
 const getModules = async () => {
-  try {
-    return await knex('modules').select('modules.id', 'modules.title');
-  } catch (error) {
-    return error.message;
-  }
+  return knex('modules').select('modules.id', 'modules.title');
 };
 
 const getModuleById = async (id) => {
+  if (!id) {
+    throw new HttpError('Id should be a number', 400);
+  }
+
   try {
     const modules = await knex('modules')
       .select('modules.id as id', 'title')
@@ -28,6 +28,10 @@ const getModuleById = async (id) => {
 };
 
 const editModule = async (moduleId, updatedModule) => {
+  if (!moduleId) {
+    throw new HttpError('moduleId should be a number', 400);
+  }
+
   return knex('modules')
     .where({ id: moduleId })
     .update({
@@ -40,9 +44,7 @@ const editModule = async (moduleId, updatedModule) => {
 };
 
 const deleteModule = async (modulesId) => {
-  return knex('modules')
-    .where({ id: modulesId })
-    .del();
+  return knex('modules').where({ id: modulesId }).del();
 };
 
 const createModule = async (body) => {

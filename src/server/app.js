@@ -12,7 +12,7 @@ const HttpError = require('./api/lib/utils/http-error');
 const buildPath = path.join(__dirname, '../../dist');
 
 const apiRouter = require('./api/routes/api-router');
-const { authenticate } = require('./middleware/auth');
+// const { authenticate } = require('./middleware/auth');
 
 require('./config/db');
 
@@ -22,7 +22,8 @@ const app = express();
 
 app.use(express.static(buildPath));
 
-app.use(authenticate);
+// Enable when Firebase admin is added
+// app.use(authenticate);
 
 app.locals.ENV = process.env.NODE_ENV;
 app.locals.ENV_DEVELOPMENT = process.env.NODE_ENV === 'development';
@@ -44,23 +45,31 @@ app.use(cors());
 
 app.use(process.env.API_PATH, apiRouter);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
+  console.log('Got here!');
+  if (res.headersSent) {
+    console.log('headers sent...');
+    return next(err);
+  }
+
   if (err instanceof HttpError) {
     res.status(err.httpStatus);
+    console.log('AAKJSDHJKASHDLASDJSD');
     if (err.body) {
       return res.json(err.body);
     }
     return res.send({ error: err.message });
   }
-  res.sendStatus(500);
+
+  res.status(500).send({ error: err || 'Unknown error' });
 });
 
-app.use('/api/', function(req, res) {
+app.use('/api/', function (req, res) {
   res.status(404).send("Sorry can't find that!");
 });
 
 // If "/api" is called, redirect to the API documentation.
-app.use('/api', function(req, res) {
+app.use('/api', function (req, res) {
   res.redirect(`${process.env.API_PATH}/documentation`);
 });
 
