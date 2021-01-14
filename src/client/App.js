@@ -12,23 +12,28 @@ import Profile from './containers/Profile';
 import Loader from './components/Loader';
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuthentication();
-  if (isLoading) return <Loader />;
+  const { isLoading } = useAuthentication();
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <Router>
-      <Header isAuthenticated={isAuthenticated} />
+      <Header />
       <Switch>
+        {/* Home page */}
         <Route exact path="/">
           <Home />
         </Route>
+
+        {/* Anonymous pages */}
         <SignIn exact path="/sign-in" />
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
-        <AuthenticatedRoute
-          exact
-          path="/profile"
-          isAuthenticated={isAuthenticated}
-        >
+
+        {/* ALl routes below are authenticated routes - a user must login first */}
+        <AuthenticatedRoute exact path="/profile">
           <Profile />
         </AuthenticatedRoute>
       </Switch>

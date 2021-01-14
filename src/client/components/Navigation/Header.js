@@ -1,9 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { signOut } from '../../firebase/auth';
 
-export default function Header({ isAuthenticated = false }) {
+import { useFirebase } from '../../firebase/FirebaseContext';
+import { useAuthentication } from '../../hooks/useAuthentication';
+
+export default function Header() {
+  const { signOut } = useFirebase();
+  const { isAuthenticated } = useAuthentication();
+
   if (isAuthenticated) {
     return (
       <nav>
@@ -23,6 +27,7 @@ export default function Header({ isAuthenticated = false }) {
       </nav>
     );
   }
+
   return (
     <nav>
       <ul>
@@ -42,7 +47,3 @@ export default function Header({ isAuthenticated = false }) {
     </nav>
   );
 }
-
-Header.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-};

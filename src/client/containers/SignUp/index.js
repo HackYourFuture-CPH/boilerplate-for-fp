@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { signUp } from '../../firebase/auth';
 import UserCreationSuccess from '../../components/Success/UserCreationSuccess';
 import SignUp from '../../components/Forms/SignUp';
 import Loader from '../../components/Loader';
+import { useFirebase } from '../../firebase/FirebaseContext';
 
 const getDoesPasswordsMatch = ({ password, passwordConfirm }) =>
   password === passwordConfirm;
@@ -10,6 +10,9 @@ const getDoesPasswordsMatch = ({ password, passwordConfirm }) =>
 export default function SignUpContainer() {
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { signUp } = useFirebase();
+
   const onSubmit = async ({ email, password, passwordConfirm }) => {
     setIsLoading(true);
     const doesPasswordsMatch = getDoesPasswordsMatch({
@@ -25,7 +28,14 @@ export default function SignUpContainer() {
     setIsLoading(false);
     if (isSignedUp) setIsSuccessful(true);
   };
-  if (isLoading) return <Loader />;
-  if (isSuccessful) return <UserCreationSuccess />;
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isSuccessful) {
+    return <UserCreationSuccess />;
+  }
+
   return <SignUp onSubmit={onSubmit} />;
 }

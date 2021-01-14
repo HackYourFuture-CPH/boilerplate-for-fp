@@ -1,5 +1,3 @@
-import { auth } from './index';
-
 function handleAuthErrors({ code, message }) {
   switch (code) {
     case FIREBASE_ERROR_CODES.WRONG_PASSWORD:
@@ -27,7 +25,7 @@ const FIREBASE_ERROR_CODES = {
  *
  * @param {email, password} (sign in user)
  */
-export async function signIn({ email, password }) {
+export async function signIn(auth, { email, password }) {
   try {
     await auth.signInWithEmailAndPassword(email, password);
   } catch (error) {
@@ -35,7 +33,7 @@ export async function signIn({ email, password }) {
   }
 }
 
-export async function signUp({ email, password }) {
+export async function signUp(auth, { email, password }) {
   try {
     await auth.createUserWithEmailAndPassword(email, password);
     return true;
@@ -44,7 +42,7 @@ export async function signUp({ email, password }) {
   }
 }
 
-export async function resetPassword({ email }) {
+export async function resetPassword(auth, { email }) {
   // [START sendpasswordemail]
   try {
     await auth.sendPasswordResetEmail(email);
@@ -56,6 +54,6 @@ export async function resetPassword({ email }) {
   // [END sendpasswordemail];
 }
 
-export function signOut() {
+export function signOut(auth) {
   auth.signOut();
 }

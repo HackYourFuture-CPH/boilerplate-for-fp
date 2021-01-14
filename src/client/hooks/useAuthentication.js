@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { auth } from '../firebase';
+
+import { useFirebase } from '../firebase/FirebaseContext';
 
 function authRedirect() {
   if (
@@ -9,6 +10,7 @@ function authRedirect() {
     window.location.href = '/profile';
   }
 }
+
 /**
  * Docs: https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data
  */
@@ -17,7 +19,14 @@ export function useAuthentication() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // default is loading
   const [isLoading, setIsLoading] = useState(true);
+  const { auth } = useFirebase();
+
   useEffect(() => {
+    if (!auth) {
+      setIsLoading(false);
+      return;
+    }
+
     auth.onAuthStateChanged((user) => {
       // if user exists it means authenticated
       if (user) {
@@ -29,7 +38,7 @@ export function useAuthentication() {
         setIsLoading(false);
       }
     });
-    return () => {}; // eslint-disable-line
-  }, []);
+  }, [auth]);
+
   return { isAuthenticated, isLoading };
 }

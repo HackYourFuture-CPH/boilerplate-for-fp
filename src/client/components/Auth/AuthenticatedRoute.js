@@ -1,8 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 
-function AuthenticatedRoute({ children, isAuthenticated, ...rest }) {
+import { useAuthentication } from '../../hooks/useAuthentication';
+
+function AuthenticatedRoute({ children, ...rest }) {
+  const { isAuthenticated } = useAuthentication();
+
   return (
     <Route
       // (we need to spread)
@@ -27,5 +31,4 @@ export default AuthenticatedRoute;
 
 AuthenticatedRoute.propTypes = {
   children: PropTypes.element.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
 };
