@@ -32,7 +32,7 @@ function App() {
         <SignUp exact path="/sign-up" />
         <ResetPassword exact path="/reset-password" />
 
-        {/* ALl routes below are authenticated routes - a user must login first */}
+        {/* All routes below are authenticated routes - a user must login first */}
         <AuthenticatedRoute exact path="/profile">
           <Profile />
         </AuthenticatedRoute>
