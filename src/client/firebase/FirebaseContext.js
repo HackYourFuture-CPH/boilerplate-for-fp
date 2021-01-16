@@ -12,10 +12,15 @@ import { initFirebase } from './configure';
 
 const FirebaseContext = createContext();
 
-export function FirebaseProvider({ children }) {
-  const [auth, setAuth] = useState(null);
+export function FirebaseProvider({ children, initialAuth }) {
+  const [auth, setAuth] = useState(initialAuth);
 
   useEffect(() => {
+    if (auth) {
+      // Don't initialize twice
+      return;
+    }
+
     try {
       const r = initFirebase();
       setAuth(r.auth);
@@ -26,7 +31,7 @@ export function FirebaseProvider({ children }) {
         e,
       );
     }
-  }, []);
+  }, [auth]);
 
   const value = useMemo(
     () => ({
@@ -49,6 +54,13 @@ export function FirebaseProvider({ children }) {
 
 FirebaseProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  // This time we know what we are doing :)
+  // eslint-disable-next-line react/forbid-prop-types
+  initialAuth: PropTypes.object,
+};
+
+FirebaseProvider.defaultProps = {
+  initialAuth: null,
 };
 
 /**
