@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <>
       <Header />
       <Switch>
         {/* Home page */}
@@ -37,7 +37,7 @@ function App() {
           <Profile />
         </AuthenticatedRoute>
       </Switch>
-    </Router>
+    </>
   );
 }
 
