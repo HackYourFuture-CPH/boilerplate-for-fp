@@ -12,6 +12,8 @@ const modulesController = require('../controllers/modules.controller');
  * @swagger
  * /modules:
  *  get:
+ *    tags:
+ *    - Modules
  *    summary: Get all modules
  *    description:
  *      Will return all modules.
@@ -33,6 +35,8 @@ router.get('/', (req, res, next) => {
  * @swagger
  * /modules/{ID}:
  *  get:
+ *    tags:
+ *    - Modules
  *    summary: Get module by ID
  *    description:
  *      Will return single module with a matching ID.
@@ -62,6 +66,8 @@ router.get('/:id', (req, res, next) => {
  * @swagger
  * /modules:
  *  post:
+ *    tags:
+ *    - Modules
  *    summary: Create a module
  *    description:
  *      Will create a module.
@@ -101,10 +107,7 @@ router.post('/', (req, res) => {
     .catch((error) => {
       console.log(error);
 
-      res
-        .status(400)
-        .send('Bad request')
-        .end();
+      res.status(400).send('Bad request').end();
     });
 });
 
@@ -112,6 +115,8 @@ router.post('/', (req, res) => {
  * @swagger
  * /modules/{ID}:
  *  patch:
+ *    tags:
+ *    - Modules
  *    summary: Create a module
  *    description:
  *      Will create a module.
@@ -153,6 +158,8 @@ router.patch('/:id', (req, res, next) => {
  * @swagger
  * /modules/{ID}:
  *  delete:
+ *    tags:
+ *    - Modules
  *    summary: Delete a module
  *    description:
  *      Will delete a module with a given ID.

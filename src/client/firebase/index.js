@@ -1,3 +1,3 @@
-import { auth } from './configure';
+import { FirebaseProvider, useFirebase } from './FirebaseContext';
 
-export { auth };
+export { FirebaseProvider, useFirebase };
