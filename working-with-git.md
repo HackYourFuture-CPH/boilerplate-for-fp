@@ -2,14 +2,14 @@
 ## 💻 Working with GIT <a name="git"></a>
 
 You will be working directly on the main repo and making Pull Request on the Develop Branch, 
-NEVER on the Master branch. PR on the Master Branch *will not be merged*, they will be closed.
+NEVER on the `main` branch. PR on the `main` Branch *will not be merged*, they will be closed.
 
 Working with git is a HUGE part of the final project. This is how you should be
 working with git in the final project:
 
 This repo has two branches:
 
-- `master` - Used for deployment. This branch should be as clean as is possible.
+- `main` - Used for deployment. This branch should be as clean as is possible.
   NEVER directly commit to this branch!
 - `develop` - A branch where we do all development. That means that all feature
   branches should be merged into this branch. Very important!
@@ -22,7 +22,7 @@ popup:
    will do all our cookies popup development. First make sure that you are
    branching out from develop: `git checkout develop`, then create a new branch:
    `git checkout -b feature/cookies-popup`.
-   - If you fail to checkout develop and branch out from master or some other
+   - If you fail to checkout develop and branch out from `main` or some other
      branch, you will see strange changes pop up when you try to make your pull
      request and merge it into develop. This means you have to "move" all of
      your changes from this branch to a "fresh" one that has been branched off

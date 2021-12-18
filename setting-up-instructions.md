@@ -10,7 +10,7 @@ Steps:
 
 - Create a new repository on Github
   - Choose the Boilerplate repository as template
-  - Make sure "Include all branches" is unchecked, we only want to carry over the Master branch
+  - Make sure "Include all branches" is unchecked, we only want to carry over the `main` branch
   - Repository name should follow this convention: `fp-class[class-number]`. For example `fp-class12`.
   - You may want to keep the repo private, but remember to set it public when project begins.
   - Add a suitable description and create the repository
@@ -29,9 +29,9 @@ git remote add boilerplate git@github.com:HackYourFuture-CPH/boilerplate-for-fp.
 git remote -v
 ```
 
-You should now be able to pull changes from the boilerplate master branch by running this command in your newly created repository:
+You should now be able to pull changes from the boilerplate naub branch by running this command in your newly created repository:
 
-    git pull boilerplate master --allow-unrelated-histories
+    git pull boilerplate main --allow-unrelated-histories
 
 ### 💥Create
 
@@ -41,22 +41,22 @@ Make sure to set the develop branch to default.
 
 ### 🛡️ Protect
 
-In the new repository set the branch protection settings so that merging to the master or develop branch requires PR reviews. Set the branch protection rules so it requires review from at least 1 codeowner and 1 regular member (i.e. student).
+In the new repository set the branch protection settings so that merging to the main or develop branch requires PR reviews. Set the branch protection rules so it requires review from at least 1 codeowner and 1 regular member (i.e. student).
 
 Also make sure to assign the team `final-project-mentors` to the repo and update the team to contain the mentors that should be able to review PRs with codeowners status.
 
 ### 🚼Change:
 
-[favicon](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/public/favicon.ico)
+[favicon](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/public/favicon.ico)
 
 ### 🚨 Delete:
 
-❌[GitHub logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/git-logo.png),  
-❌[Heroku logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/heroku-logo.svg),  
-❌[AWS logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/aws.svg),  
-❌[S3 logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/s3.png),  
-❌[Storybook logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/storybook.svg),  
-❌[Swagger logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/master/swagger-logo.png)
+❌[GitHub logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/git-logo.png),  
+❌[Heroku logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/heroku-logo.svg),  
+❌[AWS logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/aws.svg),  
+❌[S3 logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/s3.png),  
+❌[Storybook logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/storybook.svg),  
+❌[Swagger logo](https://github.com/HackYourFuture-CPH/boilerplate-for-fp/blob/main/swagger-logo.png)
 
 ## <img width=16px height=25px src="/heroku-logo.svg"  alt="Heroku logo"></a> Heroku
 
