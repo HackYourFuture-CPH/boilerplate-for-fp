@@ -282,7 +282,7 @@ You can use your api token to authorize in Swagger and you will be able to
 perform test calls against the API directly from Swagger.
 
 If you need to make changes to the specification, this can be done via the
-[Swagger.json](/src/server/config/swagger.json) file.
+[Swagger.json](/src/server/api/routes/api-router.js) file.
 
 ### <img width=20px height=20x src="/storybook.svg"  alt="Storybook logo"></a> Working with Storybook
 
