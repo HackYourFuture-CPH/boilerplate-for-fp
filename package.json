@@ -2,5 +2,9 @@
   "name": "hyf-final-project-monorepo",
   "private": true,
   "workspaces": ["packages/*"],
-  "scripts": {}
+  "scripts": {},
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
+  }
 }
