@@ -2,5 +2,7 @@
   "name": "hyf-final-project-monorepo",
   "private": true,
   "workspaces": ["packages/*"],
-  "scripts": {}
+  "scripts": {
+    "knex": "knex --cwd ./packages/server"
+  }
 }
