@@ -1,6 +1,31 @@
 {
   "name": "hyf-final-project-monorepo",
   "private": true,
-  "workspaces": ["packages/*"],
-  "scripts": {}
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
+  },
+  "scripts": {
+    "knex": "knex --cwd ./packages/server",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
+    "format": "yarn prettier --write",
+    "lint": "yarn workspaces run lint",
+    "format:check": "yarn prettier --list-different",
+    "validate": "yarn format:check && yarn lint",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
+    "prettier": "^2.6.2"
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|ts|tsx|css)": [
+      "yarn validate"
+    ],
+    "*.--write": "prettier --write"
+  }
 }

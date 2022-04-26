@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 
 // controllers
-const exampleResourceController = require('../controllers/exampleResource.controller');
+const exampleResourcesController = require('../controllers/exampleResources.controller');
 
 /**
  * @swagger
@@ -25,21 +25,21 @@ const exampleResourceController = require('../controllers/exampleResource.contro
  *        description: Unexpected error.
  */
 router.get('/', (req, res, next) => {
-  exampleResourceController
-    .getModules()
+  exampleResourcesController
+    .getExampleResources()
     .then((result) => res.json(result))
     .catch(next);
 });
 
 /**
  * @swagger
- * /modules/{ID}:
+ * /exampleResources/{ID}:
  *  get:
  *    tags:
- *    - Modules
- *    summary: Get module by ID
+ *    - ExampleResources
+ *    summary: Get exampleResource by ID
  *    description:
- *      Will return single module with a matching ID.
+ *      Will return single exampleResource with a matching ID.
  *    produces: application/json
  *    parameters:
  *     - in: path
@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
  *       schema:
  *         type: integer
  *         required: true
- *         description: The ID of the module to get
+ *         description: The ID of the exampleResource to get
  *
  *    responses:
  *      200:
@@ -56,55 +56,45 @@ router.get('/', (req, res, next) => {
  *        description: Unexpected error.
  */
 router.get('/:id', (req, res, next) => {
-  exampleResourceController
-    .getModuleById(req.params.id)
+  exampleResourcesController
+    .getExampleResourceById(req.params.id)
     .then((result) => res.json(result))
     .catch(next);
 });
 
 /**
  * @swagger
- * /modules:
+ * /exampleResources:
  *  post:
  *    tags:
- *    - Modules
- *    summary: Create a module
+ *    - exampleResources
+ *    summary: Create a exampleResource
  *    description:
- *      Will create a module.
+ *      Will create a exampleResource.
  *    produces: application/json
  *    parameters:
  *      - in: body
- *        name: module
- *        description: The module to create.
+ *        name: exampleResource
+ *        description: The exampleResource to create.
  *        schema:
  *          type: object
  *          required:
  *            - title
- *            - startDate
- *            - endDate
- *             - classId
  *          properties:
  *            title:
  *              type: string
- *            startDate:
- *              type: string
- *              format: date-time
- *            endDate:
- *              type: string
- *              format: date-time
- *            classId:
- *              type: string
  *    responses:
  *      201:
- *        description: Module created
+ *        description: ExampleResources created
  *      5XX:
  *        description: Unexpected error.
  */
 router.post('/', (req, res) => {
-  exampleResourceController
-    .createModule(req.body)
+  exampleResourcesController
+    .createExampleResource(req.body)
     .then((result) => res.json(result))
     .catch((error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
 
       res.status(400).send('Bad request').end();
@@ -113,78 +103,73 @@ router.post('/', (req, res) => {
 
 /**
  * @swagger
- * /modules/{ID}:
+ * /exampleResources/{ID}:
  *  patch:
  *    tags:
- *    - Modules
- *    summary: Create a module
+ *    - exampleResources
+ *    summary: Create an exampleResource
  *    description:
- *      Will create a module.
+ *      Will create an exampleResource.
  *    produces: application/json
  *    parameters:
  *      - in: path
  *        name: ID
- *        description: ID of the module to patch.
+ *        description: ID of the exampleResource to patch.
  *      - in: body
- *        name: module
- *        description: The module to create.
+ *        name: exampleResource
+ *        description: The exampleResource to create.
  *        schema:
  *          type: object
  *          properties:
  *            title:
  *              type: string
- *            startDate:
- *              type: string
- *              format: date-time
- *            endDate:
- *              type: string
- *              format: date-time
- *            classId:
- *              type: string
  *    responses:
  *      200:
- *        description: Module was patched
+ *        description: ExampleResource was patched
  *      5XX:
  *        description: Unexpected error.
  */
 router.patch('/:id', (req, res, next) => {
-  exampleResourceController
-    .editModule(req.params.id, req.body)
+  exampleResourcesController
+    .editExampleResource(req.params.id, req.body)
     .then((result) => res.json(result))
     .catch(next);
 });
 
 /**
  * @swagger
- * /modules/{ID}:
+ * /exampleResources/{ID}:
  *  delete:
  *    tags:
- *    - Modules
- *    summary: Delete a module
+ *    - exampleResources
+ *    summary: Delete an exampleResource
  *    description:
- *      Will delete a module with a given ID.
+ *      Will delete a exampleResource with a given ID.
  *    produces: application/json
  *    parameters:
  *      - in: path
  *        name: ID
- *        description: ID of the module to delete.
+ *        description: ID of the exampleResource to delete.
  *    responses:
  *      200:
- *        description: Module deleted
+ *        description: exampleResource deleted
  *      5XX:
  *        description: Unexpected error.
  */
 router.delete('/:id', (req, res) => {
-  exampleResourceController
-    .deleteModule(req.params.id, req)
+  exampleResourcesController
+    .deleteExampleResource(req.params.id, req)
     .then((result) => {
-      // If result is equal to 0, then that means the module id does not exist
+      // If result is equal to 0, then that means the exampleResource id does not exist
       if (result === 0) {
-        res.status(404).send('The module ID you provided does not exist.');
+        res
+          .status(404)
+          .send('The exampleResource ID you provided does not exist.');
       } else {
         res.json({ success: true });
       }
     })
+    // eslint-disable-next-line no-console
     .catch((error) => console.log(error));
 });
 
