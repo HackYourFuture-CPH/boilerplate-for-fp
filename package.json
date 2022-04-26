@@ -4,6 +4,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.19.1"
+  },
   "scripts": {
     "knex": "knex --cwd ./packages/server",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
