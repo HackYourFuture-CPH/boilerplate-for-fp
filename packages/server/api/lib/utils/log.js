@@ -20,7 +20,8 @@ module.exports = {
 
   error(err, stack = false, ...args) {
     console.log(styles.error(` ❗  ${err}`, ...args));
-    if (stack && err.stack) console.log(styles.error(` ❗ ${err.stack}`, ...args));
+    if (stack && err.stack)
+      console.log(styles.error(` ❗ ${err.stack}`, ...args));
   },
 
   warn(message, ...args) {

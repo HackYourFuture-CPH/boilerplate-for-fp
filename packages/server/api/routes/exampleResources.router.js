@@ -94,6 +94,7 @@ router.post('/', (req, res) => {
     .createExampleResource(req.body)
     .then((result) => res.json(result))
     .catch((error) => {
+      // eslint-disable-next-line no-console
       console.log(error);
 
       res.status(400).send('Bad request').end();
@@ -161,11 +162,14 @@ router.delete('/:id', (req, res) => {
     .then((result) => {
       // If result is equal to 0, then that means the exampleResource id does not exist
       if (result === 0) {
-        res.status(404).send('The exampleResource ID you provided does not exist.');
+        res
+          .status(404)
+          .send('The exampleResource ID you provided does not exist.');
       } else {
         res.json({ success: true });
       }
     })
+    // eslint-disable-next-line no-console
     .catch((error) => console.log(error));
 });
 

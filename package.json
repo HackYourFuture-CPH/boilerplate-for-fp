@@ -5,6 +5,22 @@
     "packages/*"
   ],
   "scripts": {
-    "knex": "knex --cwd ./packages/server"
+    "knex": "knex --cwd ./packages/server",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
+    "format": "yarn prettier --write",
+    "lint": "yarn workspaces run lint",
+    "format:check": "yarn prettier --list-different",
+    "validate": "npm-run-all --parallel format:check lint"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.6.2"
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|ts|tsx|json|css)": [
+      "yarn format"
+    ]
   }
 }

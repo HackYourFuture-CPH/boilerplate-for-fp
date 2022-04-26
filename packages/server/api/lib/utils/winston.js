@@ -16,6 +16,7 @@ const myFormatFile = printf(
     }`,
 );
 const myFormatConsole = printf((info) =>
+  // eslint-disable-next-line no-console
   console.info(
     ` ℹ️ ${
       typeof info.message === 'object'
