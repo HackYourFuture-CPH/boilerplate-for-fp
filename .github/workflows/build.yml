@@ -12,16 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Use Node.js 17.3.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-      - run: npm install
+          node-version: 17.3.x
+      - run: yarn
         env:
           CI: true
       - run: |
           cp .env.example .env
       - name: Build client
-        run: npm run build
+        run: yarn build
       - name: Run tests
-        run: npm run test
+        run: yarn run test
