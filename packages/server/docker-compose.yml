@@ -1,25 +1,15 @@
-version: '3'
-
-services:
-  mysql:
-
-    image: mysql:8.0.28
-    command: --default-authentication-plugin=mysql_native_password
-    ports:
-      - '3306:3306'
-    environment:
-      - MYSQL_ROOT_PASSWORD=testrootpassword
-      - MYSQL_DATABASE=knex_test
-      - MYSQL_USER=testuser
-      - MYSQL_PASSWORD=testpassword
-    restart: always
+    version: '3'
+    services:
+      mysql:
+        container_name: $MYSQL_DATABASE
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        volumes:
+          - mysql_data:/var/lib/mysql
+        env_file:
+          - .env
+        ports:
+          - "$MYSQL_PORT:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-    env_file:
-      - ../../.env
-
-volumes:
-  mysql_data:
-    driver_opts:
-      type: tmpfs
-      device: tmpfs
+      mysql_data:
