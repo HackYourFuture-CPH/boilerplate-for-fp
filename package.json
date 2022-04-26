@@ -6,7 +6,8 @@
   ],
   "engines": {
     "npm": "please-use-yarn",
-    "yarn": ">= 1.19.1"
+    "yarn": ">= 1.19.1",
+    "node": ">= 17.3.0"
   },
   "scripts": {
     "knex": "knex --cwd ./packages/server",
