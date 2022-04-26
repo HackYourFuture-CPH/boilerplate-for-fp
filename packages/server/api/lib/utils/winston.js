@@ -8,22 +8,19 @@ const { combine, label, printf } = format;
 
 // formats
 const myFormatFile = printf(
-  (info) =>
-    `${info.timestamp} [${info.level}]: ${info.label} - ${
-      typeof info.message === 'object'
-        ? JSON.stringify(info.message)
-        : info.message
-    }`,
+  (info) => `${info.timestamp} [${info.level}]: ${info.label} - ${
+    typeof info.message === 'object'
+      ? JSON.stringify(info.message)
+      : info.message
+  }`,
 );
-const myFormatConsole = printf((info) =>
-  console.info(
-    ` ℹ️ ${
-      typeof info.message === 'object'
-        ? JSON.stringify(info.message)
-        : info.message
-    }`,
-  ),
-);
+const myFormatConsole = printf((info) => console.info(
+  ` ℹ️ ${
+    typeof info.message === 'object'
+      ? JSON.stringify(info.message)
+      : info.message
+  }`,
+));
 
 const appendTimestamp = format((info, opts) => {
   if (opts.tz) {

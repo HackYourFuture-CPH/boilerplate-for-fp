@@ -6,7 +6,10 @@ const HttpError = require('../lib/utils/http-error');
 const moment = require('moment-timezone');
 
 const getExampleResources = async () => {
-  return knex('exampleResources').select('exampleResources.id', 'exampleResources.title');
+  return knex('exampleResources').select(
+    'exampleResources.id',
+    'exampleResources.title',
+  );
 };
 
 const getExampleResourceById = async (id) => {
@@ -27,17 +30,18 @@ const getExampleResourceById = async (id) => {
   }
 };
 
-const editExampleResource = async (exampleResourceId, updatedExampleResource) => {
+const editExampleResource = async (
+  exampleResourceId,
+  updatedExampleResource,
+) => {
   if (!exampleResourceId) {
     throw new HttpError('exampleResourceId should be a number', 400);
   }
 
-  return knex('exampleResources')
-    .where({ id: exampleResourceId })
-    .update({
-      title: updatedExampleResource.title,
-      updatedAt: moment().format(),
-    });
+  return knex('exampleResources').where({ id: exampleResourceId }).update({
+    title: updatedExampleResource.title,
+    updatedAt: moment().format(),
+  });
 };
 
 const deleteExampleResource = async (exampleResourceId) => {
@@ -45,7 +49,6 @@ const deleteExampleResource = async (exampleResourceId) => {
 };
 
 const createExampleResource = async (body) => {
-  console.log({body})
   await knex('exampleResources').insert({
     title: body.title,
   });
