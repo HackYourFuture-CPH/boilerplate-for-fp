@@ -10,17 +10,18 @@
     "format": "yarn prettier --write",
     "lint": "yarn workspaces run lint",
     "format:check": "yarn prettier --list-different",
-    "validate": "npm-run-all --parallel format:check lint"
+    "validate": "yarn format:check && yarn lint",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "husky": "^7.0.4",
     "lint-staged": "^12.4.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "**/*.+(js|jsx|ts|tsx|json|css)": [
-      "yarn format"
-    ]
+    "**/*.+(js|jsx|ts|tsx|css)": [
+      "yarn validate"
+    ],
+    "*.--write": "prettier --write"
   }
 }
