@@ -1,26 +1,29 @@
 // const winston = require('winston');
 const appRoot = require('app-root-path');
 const moment = require('moment-timezone');
-const JSON = require('circular-json');
+const JSON = require('flatted');
 const { createLogger, format, transports } = require('winston');
 
 const { combine, label, printf } = format;
 
 // formats
 const myFormatFile = printf(
-  (info) => `${info.timestamp} [${info.level}]: ${info.label} - ${
-    typeof info.message === 'object'
-      ? JSON.stringify(info.message)
-      : info.message
-  }`,
+  (info) =>
+    `${info.timestamp} [${info.level}]: ${info.label} - ${
+      typeof info.message === 'object'
+        ? JSON.stringify(info.message)
+        : info.message
+    }`,
 );
-const myFormatConsole = printf((info) => console.info(
-  ` ℹ️ ${
-    typeof info.message === 'object'
-      ? JSON.stringify(info.message)
-      : info.message
-  }`,
-));
+const myFormatConsole = printf((info) =>
+  console.info(
+    ` ℹ️ ${
+      typeof info.message === 'object'
+        ? JSON.stringify(info.message)
+        : info.message
+    }`,
+  ),
+);
 
 const appendTimestamp = format((info, opts) => {
   if (opts.tz) {
