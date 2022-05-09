@@ -1,2 +1,5 @@
 # /node_modules/* and /bower_components/* ignored by default
 serviceWorker.*
+yarn.lock
+/build
+/storybook-static

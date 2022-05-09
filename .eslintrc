@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "airbnb", "prettier"],
+  "rules": {
+    "arrow-body-style": "off",
+    "arrow-parens": "off",
+    "camelcase": "warn",
+    "consistent-return": "off",
+    "func-names": "off",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.js", "**/*.test.js"]
+      }
+    ],
+    "import/no-unresolved": "off",
+    "import/order": "off",
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-console": "error",
+    "no-restricted-globals": "off",
+    "no-unexpected-multiline": "off",
+    "no-use-before-define": "off",
+    "no-var-requires": "off",
+    "quotes": "off"
+  }
+}
