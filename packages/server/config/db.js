@@ -3,11 +3,10 @@ require('dotenv').config({ path: '../../../.env' });
 const winston = require('../api/lib/utils/winston').logger;
 
 // db setup
-const dbOptions = require('../knexfile').development;
+const dbOptions = require('../knexfile')[process.env.NODE_ENV === 'production' ? 'production' : 'development'];
 
 // create connection
 const knex = require('knex')(dbOptions);
-// console.log(knex);
 
 knex.raw('SELECT VERSION()').then(() => {
   // console.log((version[0][0]));
