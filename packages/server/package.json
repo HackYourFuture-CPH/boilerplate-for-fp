@@ -6,7 +6,8 @@
     "db:setup": "yarn knex migrate:up && yarn knex seed:run",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "test": "echo 1"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
