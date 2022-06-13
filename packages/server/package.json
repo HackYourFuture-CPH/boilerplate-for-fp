@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "db:setup": "yarn knex migrate:up && yarn knex seed:run",
+    "db:setup": "yarn knex migrate:latest && yarn knex seed:run",
     "db:clean": "yarn knex migrate:rollback --all",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",

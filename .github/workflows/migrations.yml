@@ -40,15 +40,19 @@ jobs:
         env:
           DB_HOST: '127.0.0.1'
           DB_PORT: 33306
+          MYSQL_PORT: 33306 # TODO: We probably should just use DB_PORT in knexfile.js and then remove this line.
           DB_USER: 'root'
           DB_PASSWORD: 'password'
           DB_DATABASE: 'test'
+          MYSQL_DATABASE: 'test' # TODO: We probably should just use DB_DATABASE in knexfile.js and then remove this line.
       - name: Run DB Migrations Rollback
         run: yarn workspace server db:clean
         env:
           DB_HOST: '127.0.0.1'
           DB_PORT: 33306
+          MYSQL_PORT: 33306 # TODO: We probably should just use DB_PORT in knexfile.js and then remove this line.
           DB_USER: 'root'
           DB_PASSWORD: 'password'
           DB_DATABASE: 'test'
+          MYSQL_DATABASE: 'test' # TODO: We probably should just use DB_DATABASE in knexfile.js and then remove this line.
 
