@@ -36,18 +36,19 @@ jobs:
         env:
           CI: true
       - name: Run DB Migrations
-        run: yarn run db:setup
+        run: yarn workspace server db:setup
         env:
           DB_HOST: '127.0.0.1'
           DB_PORT: 33306
-          DB_NAME: 'test'
           DB_USER: 'root'
           DB_PASSWORD: 'password'
+          DB_DATABASE: 'test'
       - name: Run DB Migrations Rollback
-        run: yarn run db:clean
+        run: yarn workspace server db:clean
         env:
           DB_HOST: '127.0.0.1'
           DB_PORT: 33306
-          DB_NAME: 'test'
           DB_USER: 'root'
           DB_PASSWORD: 'password'
+          DB_DATABASE: 'test'
+
