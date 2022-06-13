@@ -11,7 +11,7 @@
   },
   "scripts": {
     "knex": "knex --cwd ./packages/server",
-    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json)\"",
     "format": "yarn prettier --write",
     "lint": "yarn workspaces run lint",
     "format:check": "yarn prettier --list-different",
@@ -24,7 +24,7 @@
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "**/*.+(js|jsx|ts|tsx|css)": [
+    "**/*.+(js|jsx|ts|tsx)": [
       "yarn validate"
     ],
     "*.--write": "prettier --write"
