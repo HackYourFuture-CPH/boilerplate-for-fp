@@ -19,16 +19,19 @@
     "stylelint:check": "yarn stylelint \"**/*.css\"",
     "stylelint:fix": "yarn stylelint \"**/*.css\" --fix",
     "validate": "yarn prettier:check && yarn lint && yarn stylelint:check",
+    "validate:styles": "yarn stylelint \"**/*.css\"",
     "fix": "yarn prettier:fix && yarn lint:fix && yarn stylelint:fix",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.0",
     "prettier": "^2.6.2",
     "stylelint": "^14.8.2",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^25.0.0"
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-prettier": "^2.0.0"
   },
   "lint-staged": {
     "**/*.+(js|jsx|ts|tsx|json|css)": [
