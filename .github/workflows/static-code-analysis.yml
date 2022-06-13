@@ -17,6 +17,12 @@ jobs:
         with:
           node-version: 17.3.x
       - run: yarn
-      - run: yarn run validate
+      - run: yarn run prettier:check
+        env:
+          CI: true
+      - run: yarn run lint
+        env:
+          CI: true
+      - run: yarn run stylelint:check
         env:
           CI: true
