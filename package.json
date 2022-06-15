@@ -19,7 +19,6 @@
     "stylelint:check": "yarn stylelint \"**/*.css\"",
     "stylelint:fix": "yarn stylelint \"**/*.css\" --fix",
     "validate": "yarn prettier:check && yarn lint && yarn stylelint:check",
-    "validate:styles": "yarn stylelint \"**/*.css\"",
     "fix": "yarn prettier:fix && yarn lint:fix && yarn stylelint:fix",
     "prepare": "husky install"
   },
