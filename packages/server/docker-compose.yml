@@ -1,16 +1,16 @@
-    version: '3'
-    services:
-      mysql:
-        container_name: $MYSQL_DATABASE
-        image: mysql
-        platform: linux/x86_64
-        command: --default-authentication-plugin=mysql_native_password
-        restart: always
-        volumes:
-          - mysql_data:/var/lib/mysql
-        env_file:
-          - .env
-        ports:
-          - "$MYSQL_PORT:3306"
+version: '3'
+services:
+  mysql:
+    container_name: $MYSQL_DATABASE
+    image: mysql
+    platform: linux/x86_64
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     volumes:
-      mysql_data:
+      - mysql_data:/var/lib/mysql
+    env_file:
+      - .env
+    ports:
+      - '$MYSQL_PORT:3306'
+volumes:
+  mysql_data:
