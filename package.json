@@ -12,23 +12,37 @@
   "scripts": {
     "knex": "knex --cwd ./packages/server",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
-    "format": "yarn prettier --write",
+    "prettier:check": "yarn prettier --check",
+    "prettier:fix": "yarn prettier --write",
     "lint": "yarn workspaces run lint",
-    "format:check": "yarn prettier --list-different",
-    "validate": "yarn format:check && yarn lint",
+    "lint:fix": "yarn lint --fix",
+    "stylelint:check": "yarn stylelint \"**/*.css\"",
+    "stylelint:fix": "yarn stylelint \"**/*.css\" --fix",
+    "validate": "yarn prettier:check && yarn lint && yarn stylelint:check",
+    "fix": "yarn prettier:fix && yarn lint:fix && yarn stylelint:fix",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.2",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-prettier": "^2.0.0"
   },
   "lint-staged": {
-    "**/*.+(js|jsx|ts|tsx|css)": [
-      "yarn validate"
+    "**/*.+(js|jsx|ts|tsx|json|css)": [
+      "yarn prettier:check"
     ],
-    "*.--write": "prettier --write"
+    "**/*.+(js|jsx|ts|tsx)": [
+      "yarn lint"
+    ],
+    "**/*.+(css)": [
+      "yarn stylelint:check"
+    ]
   }
 }

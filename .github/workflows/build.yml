@@ -25,5 +25,3 @@ jobs:
         run: yarn workspace client build
       - name: Run client tests
         run: echo Skipping client tests for now
-
-
