@@ -15,15 +15,13 @@ const myFormatFile = printf(
         : info.message
     }`,
 );
-const myFormatConsole = printf((info) =>
-  // eslint-disable-next-line no-console
-  console.info(
+const myFormatConsole = printf(
+  (info) =>
     ` ℹ️ ${
       typeof info.message === 'object'
         ? JSON.stringify(info.message)
         : info.message
     }`,
-  ),
 );
 
 const appendTimestamp = format((info, opts) => {
