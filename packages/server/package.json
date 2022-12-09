@@ -19,7 +19,7 @@
     "express": "~4.17.3",
     "flatted": "^3.2.5",
     "knex": "^2.0.0",
-    "moment-timezone": "^0.5.34",
+    "moment-timezone": "^0.5.35",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
     "swagger-jsdoc": "^6.2.1",
