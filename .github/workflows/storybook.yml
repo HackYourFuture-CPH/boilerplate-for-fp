@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 17.3.x
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 17.3.x
+          node-version: 18
       - run: yarn install
         env:
           CI: true
       - name: Run Storybook
-        run: yarn workspace client run storybook -- --ci --smoke-test --quiet
+        run: yarn workspace client run storybook --ci --smoke-test --quiet

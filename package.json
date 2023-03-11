@@ -5,44 +5,22 @@
     "packages/*"
   ],
   "engines": {
-    "npm": "please-use-yarn",
-    "yarn": ">= 1.19.1",
-    "node": ">= 17.3.0"
+    "node": ">= 18"
   },
   "scripts": {
-    "knex": "knex --cwd ./packages/server",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|ts|tsx|json|css)\"",
     "prettier:check": "yarn prettier --check",
-    "prettier:fix": "yarn prettier --write",
-    "lint": "yarn workspaces run lint",
-    "lint:fix": "yarn lint --fix",
-    "stylelint:check": "yarn stylelint \"**/*.css\"",
-    "stylelint:fix": "yarn stylelint \"**/*.css\" --fix",
-    "validate": "yarn prettier:check && yarn lint && yarn stylelint:check",
-    "fix": "yarn prettier:fix && yarn lint:fix && yarn stylelint:fix",
-    "prepare": "husky install"
+    "stylelint:check": "yarn stylelint \"**/*.css\""
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.0",
-    "prettier": "^2.6.2",
-    "stylelint": "^14.8.2",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard": "^25.0.0",
-    "stylelint-prettier": "^2.0.0"
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-prettier": "^3.0.0"
   },
-  "lint-staged": {
-    "**/*.+(js|jsx|ts|tsx|json|css)": [
-      "yarn prettier:check"
-    ],
-    "**/*.+(js|jsx|ts|tsx)": [
-      "yarn lint"
-    ],
-    "**/*.+(css)": [
-      "yarn stylelint:check"
-    ]
+  "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "typescript": "^4.9.5"
   }
 }
