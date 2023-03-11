@@ -12,16 +12,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 17.3.x
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 17.3.x
+          node-version: 18
       - run: yarn
         env:
           CI: true
       - run: |
-          cp ./packages/server/.env.example ./packages/server/.env
+          cp ./packages/client/.env.example ./packages/client/.env
       - name: Build client
         run: yarn workspace client build
-      - name: Run client tests
-        run: echo Skipping client tests for now
+      - run: |
+          cp ./packages/server/.env.example ./packages/server/.env
+      - name: Build server
+        run: yarn workspace server build
