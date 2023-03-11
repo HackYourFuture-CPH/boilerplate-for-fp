@@ -56,7 +56,7 @@ jspm_packages/
 .idea
 
 # SQLite Storage
-data
+*.db3
 
 # Builds
 dist
