@@ -6,14 +6,16 @@ You can either choose to install the project using a Docker container that comes
 
 ### With Docker
 
-1. Install Docker from docker.com .
-2. Clone this repository and cd into the `/packages/server` folder.
-3. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
-4. (Optional) update the credentials in the newly created `.env`. If you skip this step everything should work, but your database will have a generic name and user.
-5. Run this command to build a database with Docker: `docker compose up -d`. The database will be built based on the values in `.env`.
-6. Run `yarn db:setup` to run example migrations and seeds.
-7. Run `yarn dev` to start the server in development mode.
-8. Navigate to http://localhost:5000/api/exampleResources to verify that the API works and you can read data from the database.
+1. Install Docker from docker.com
+2. Clone this repository
+3. Run `yarn install` in the root of the folder to install the dependencies.
+4. cd into the `/packages/server` folder.
+5. Copy and rename the `.env.example` file so it is calle `.env`: `cp .env.example .env`.
+6. (Optional) update the credentials in the newly created `.env`. If you skip this step everything should work, but your database will have a generic name and user.
+7. Run this command to build a database with Docker: `docker compose up -d`. The database will be built based on the values in `.env`.
+8. Run `yarn db:setup` to run example migrations and seeds.
+9. Run `yarn dev` to start the server in development mode.
+10. Navigate to http://localhost:5001/api/exampleResources to verify that the API works and you can read data from the database.
 
 ### Or without Docker
 
@@ -23,7 +25,7 @@ You can either choose to install the project using a Docker container that comes
 4. Update the credentials in the newly created `.env` and make sure everything matches with the credentials for the database you set up in step (1).
 5. Run `yarn db:setup` to run example migrations and seeds.
 6. Run `yarn dev` to start the server in development mode.
-7. Navigate to http://localhost:5000/api/exampleResources to verify that the API works and you can read data from the database.
+7. Navigate to http://localhost:5001/api/exampleResources to verify that the API works and you can read data from the database.
 
 ## Yarn commands
 
