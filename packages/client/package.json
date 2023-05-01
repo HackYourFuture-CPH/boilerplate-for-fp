@@ -18,8 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+    "storybook": "storybook dev -p 6006 -s public",
+    "build-storybook": "storybook build -s public",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "browserslist": {
@@ -39,12 +39,13 @@
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
-    "@storybook/builder-webpack5": "^7.0.7",
-    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/addon-mdx-gfm": "^7.0.7",
     "@storybook/node-logger": "^7.0.7",
     "@storybook/preset-create-react-app": "^7.0.7",
     "@storybook/react": "^7.0.7",
+    "@storybook/react-webpack5": "^7.0.7",
     "@storybook/testing-library": "^0.1.0",
+    "storybook": "^7.0.7",
     "webpack": "^5.80.0"
   }
 }
