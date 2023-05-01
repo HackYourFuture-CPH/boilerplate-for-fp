@@ -28,10 +28,10 @@ jobs:
           while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
             sleep 1
           done
-      - name: Use Node.js 17.3.x
+      - name: Use Node.js 18
         uses: actions/setup-node@v1
         with:
-          node-version: 17.3.x
+          node-version: 18
       - run: yarn
         env:
           CI: true
@@ -51,4 +51,3 @@ jobs:
           MYSQL_USER: 'root'
           MYSQL_PASSWORD: 'password'
           MYSQL_DATABASE: 'test'
-
