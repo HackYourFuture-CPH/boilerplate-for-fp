@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo has been deprecated in place of [HYF Project Template](https://github.com/HackYourFuture-CPH/hyf-project-template), and is therefore now archived.
+
 # HYF Final project boilerplate
 
 ## Setup instructions
